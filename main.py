@@ -10,6 +10,13 @@ def scrape(url):
     source_text = response.text
     return source_text
 
+def extract(source):
+    extractor = selectorlib.Extractor.from_yaml_file('extract.yaml')
+    value = extractor.extract(source)['tours']
+
 if __name__ == "__main__":
-    scrape(url)
+    scraped = scrape(url)
+    extracted = extract(scraped)
+
+    if extracted != 'No Upcoming Tour'
 
